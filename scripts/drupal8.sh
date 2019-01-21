@@ -1,10 +1,10 @@
 # The site name should be passed in as a first parameter to the shell script.
-siteName=$1
+appName=$1
 
-mkdir $siteName
-cd $siteName
+mkdir $appName
+cd $appName
 
-echo "name: $siteName" >> .lando.yml
+echo "name: $appName" >> .lando.yml
 echo "recipe: drupal8" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
@@ -25,7 +25,7 @@ rm -rf tmp
 
 lando restart
 
-lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$siteName --yes
+lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$appName --yes
 
 lando composer require drupal/coffee:~1.0 drupal/admin_toolbar:~1.0 drupal/devel:~1.0
 lando drush pm-enable coffee admin_toolbar_tools devel devel_generate kint webprofiler --yes

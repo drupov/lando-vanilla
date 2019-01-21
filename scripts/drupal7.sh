@@ -1,10 +1,10 @@
 # The site name should be passed in as a first parameter to the shell script.
-siteName=$1
+appName=$1
 
-mkdir $siteName
-cd $siteName
+mkdir $appName
+cd $appName
 
-echo "name: $siteName" >> .lando.yml
+echo "name: $appName" >> .lando.yml
 echo "recipe: drupal7" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
@@ -23,7 +23,7 @@ lando drush pm-download drupal-7 --drupal-project-rename=web
 
 lando restart
 
-lando drush site-install --account-pass=admin --db-url=mysql://drupal7:drupal7@database/drupal7 --site-name=$siteName --yes
+lando drush site-install --account-pass=admin --db-url=mysql://drupal7:drupal7@database/drupal7 --site-name=$appName --yes
 
 lando drush pm-disable toolbar overlay --yes
 lando drush pm-uninstall toolbar overlay --yes
