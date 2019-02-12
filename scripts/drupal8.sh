@@ -13,9 +13,7 @@ echo "  xdebug: true" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
-echo "    cmd:" >> .lando.yml
-echo '      - "drush"' >> .lando.yml
-echo '      - "--root=/app/web"' >> .lando.yml
+echo "    cmd: drush --root=/app/web" >> .lando.yml
 
 lando start
 
