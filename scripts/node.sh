@@ -7,7 +7,7 @@ cd $appName
 echo "name: $appName" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
-echo "    type: node:8.9" >> .lando.yml
+echo "    type: node" >> .lando.yml
 echo "    overrides:" >> .lando.yml
 echo "      ports:" >> .lando.yml
 echo "        - 3000:3000" >> .lando.yml
