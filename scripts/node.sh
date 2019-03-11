@@ -12,7 +12,7 @@ echo "    overrides:" >> .lando.yml
 echo "      ports:" >> .lando.yml
 echo "        - 3000:3000" >> .lando.yml
 echo "    globals:" >> .lando.yml
-echo '      gulp-cli: "latest"' >> .lando.yml
+echo "      gulp-cli: latest" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  npm:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
