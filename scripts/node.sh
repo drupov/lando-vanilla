@@ -18,6 +18,8 @@ echo "  npm:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "  node:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
+echo "  npx:" >> .lando.yml
+echo "    service: appserver" >> .lando.yml
 echo "  yarn:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "  gulp:" >> .lando.yml
