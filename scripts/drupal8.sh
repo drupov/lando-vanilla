@@ -25,7 +25,7 @@ lando restart
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$appName --yes
 
-lando composer require drupal/coffee:~1.0 drupal/admin_toolbar:~1.0 drupal/devel:~1.0 drupal/module_filter:~3.0 drupal/fpa:~2.0
+lando composer require drupal/coffee drupal/admin_toolbar drupal/devel drupal/module_filter drupal/fpa
 lando drush pm-enable coffee admin_toolbar_tools devel devel_generate kint webprofiler module_filter fpa --yes
 
 echo "Browse your site by visiting:"
