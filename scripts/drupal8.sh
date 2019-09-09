@@ -18,7 +18,7 @@ echo "    cmd: drush --root=/app/web" >> .lando.yml
 lando start
 
 lando composer create-project drupal-composer/drupal-project:8.x-dev tmp --stability dev --no-interaction
-mv tmp/* .
+mv tmp/{.[!.],}* .
 rm -rf tmp
 
 lando restart
