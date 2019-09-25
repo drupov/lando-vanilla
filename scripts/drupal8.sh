@@ -10,6 +10,11 @@ echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
 echo "  xdebug: true" >> .lando.yml
+echo "services:" >> .lando.yml
+echo "  appserver:" >> .lando.yml
+echo "    overrides:" >> .lando.yml
+echo "      environment:" >> .lando.yml
+echo "        PHP_IDE_CONFIG: 'serverName=appserver'" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
