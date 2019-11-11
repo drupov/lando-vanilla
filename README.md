@@ -1,4 +1,4 @@
-# Launch a vanilla Lando app with one command.
+# Launch a vanilla Lando app with one command
 
 ## Requirements
 
@@ -18,3 +18,5 @@ scripts/drupal8.sh myapp
 # Node
 scripts/node.sh myapp
 ```
+
+Replace `myapp` with something that makes sense in your case.
