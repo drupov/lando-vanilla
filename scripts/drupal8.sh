@@ -33,6 +33,8 @@ lando restart
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$appName --yes
 
+chmod 755 web/sites/default
+
 lando composer require drupal/coffee drupal/admin_toolbar drupal/devel drupal/module_filter drupal/fpa
 lando drush pm-enable coffee admin_toolbar_tools devel devel_generate kint webprofiler module_filter fpa --yes
 
