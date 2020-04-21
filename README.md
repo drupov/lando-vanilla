@@ -15,6 +15,9 @@ scripts/drupal7.sh myapp
 # Drupal 8
 scripts/drupal8.sh myapp
 
+# Drupal 9
+scripts/drupal9.sh myapp
+
 # Node
 scripts/node.sh myapp
 ```
