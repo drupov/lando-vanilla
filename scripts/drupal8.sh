@@ -25,9 +25,9 @@ echo "    cmd: drupal --root=/app/web" >> .lando.yml
 
 lando start
 
-lando composer create-project drupal-composer/drupal-project:8.x-dev tmp --stability dev --no-interaction
-mv tmp/{.[!.],}* .
-rm -rf tmp
+lando composer create-project drupal-composer/drupal-project:8.x-dev drupal8 --stability dev --no-interaction
+mv drupal8/{.[!.],}* .
+rm -rf drupal8
 
 lando restart
 
