@@ -1,5 +1,20 @@
-# The site name should be passed in as a first parameter to the shell script.
-appName=$1
+#!/bin/bash
+
+while getopts "n:s" OPTION; do
+    case $OPTION in
+    n)
+      appName=$OPTARG
+      ;;
+    s)
+      skip=1
+      ;;
+    esac
+done
+
+if [ -v $appName ]; then
+  echo "Please provide the app name by passing it with the -n parameter."
+  exit 1
+fi
 
 mkdir $appName
 cd $appName
@@ -29,6 +44,11 @@ echo "    cmd: drupal --root=/app/web" >> .lando.yml
 echo "memory_limit = 512M" >> php.ini
 
 lando start
+
+if [[ $skip ]]; then
+   echo "Skipping site installation."
+   exit 0
+fi
 
 lando composer create-project drupal/recommended-project:^9@dev drupal9 --remove-vcs
 mv drupal9/{.[!.],}* .

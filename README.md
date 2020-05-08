@@ -19,7 +19,7 @@ scripts/drupal8.sh -n app-name
 scripts/drupal8.sh -n app-name -s
 
 # Drupal 9
-scripts/drupal9.sh myapp
+scripts/drupal9.sh -n app-name -s
 
 # Node
 scripts/node.sh -n app-name
