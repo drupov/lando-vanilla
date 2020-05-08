@@ -1,5 +1,22 @@
-# The site name should be passed in as a first parameter to the shell script.
-appName=$1
+#!/bin/bash
+
+noAppNameMessage="Please provide the app name by passing it with the -n parameter."
+
+while getopts "n:" OPTION; do
+  case $OPTION in
+  n)
+    appName=$OPTARG
+    ;;
+  *)
+    echo $noAppNameMessage
+    exit 1
+  esac
+done
+
+if [ -v $appName ]; then
+  echo $noAppNameMessage
+  exit 1
+fi
 
 mkdir $appName
 cd $appName
