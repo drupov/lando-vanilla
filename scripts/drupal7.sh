@@ -15,10 +15,14 @@ echo "  appserver:" >> .lando.yml
 echo "    overrides:" >> .lando.yml
 echo "      environment:" >> .lando.yml
 echo "        PHP_IDE_CONFIG: 'serverName=$appName.lndo.site'" >> .lando.yml
+echo "    config:" >> .lando.yml
+echo "      php: php.ini" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "    cmd: drush --root=/app/web" >> .lando.yml
+
+echo "memory_limit = 512M" >> php.ini
 
 lando start
 
