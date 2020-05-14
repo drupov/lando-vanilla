@@ -20,7 +20,7 @@ mkdir $appName
 cd $appName
 
 echo "name: $appName" >> .lando.yml
-echo "recipe: drupal8" >> .lando.yml
+echo "recipe: drupal9" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
