@@ -61,7 +61,7 @@ chmod 755 web/sites/default
 
 lando composer require drupal/coffee drupal/admin_toolbar
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev
-lando drush pm-enable coffee admin_toolbar_tools devel devel_generate kint webprofiler module_filter fpa --yes
+lando drush pm-enable coffee admin_toolbar_tools devel devel_generate webprofiler module_filter fpa --yes
 
 echo "Browse your site by visiting:"
 lando info | grep lndo.site
