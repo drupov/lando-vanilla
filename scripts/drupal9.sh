@@ -50,7 +50,7 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal/recommended-project:^9@dev drupal9 --remove-vcs
+lando composer create-project drupal-composer/drupal-project:9.x-dev drupal9 --no-interaction
 mv drupal9/{.[!.],}* .
 rm -rf drupal9
 
