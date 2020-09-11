@@ -56,7 +56,7 @@ rm -rf drupal9
 
 lando restart
 
-lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$appName --yes
+lando drush site-install --account-pass=admin --db-url=mysql://drupal9:drupal9@database/drupal9 --site-name=$appName --yes
 
 chmod 755 web/sites/default
 
