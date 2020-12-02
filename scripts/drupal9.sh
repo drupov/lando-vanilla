@@ -20,7 +20,7 @@ mkdir $appName
 cd $appName
 
 echo "name: $appName" >> .lando.yml
-echo "recipe: drupal8" >> .lando.yml
+echo "recipe: drupal9" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
@@ -49,19 +49,19 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:8.x-dev drupal8 --stability dev --no-interaction
-mv drupal8/{.[!.],}* .
-rm -rf drupal8
+lando composer create-project drupal-composer/drupal-project:9.x-dev drupal9 --no-interaction
+mv drupal9/{.[!.],}* .
+rm -rf drupal9
 
 lando restart
 
-lando drush site-install --account-pass=admin --db-url=mysql://drupal8:drupal8@database/drupal8 --site-name=$appName --yes
+lando drush site-install --account-pass=admin --db-url=mysql://drupal9:drupal9@database/drupal9 --site-name=$appName --yes
 
 chmod 755 web/sites/default
 
 lando composer require drupal/coffee drupal/admin_toolbar
-lando composer require drupal/devel drupal/module_filter drupal/fpa --dev
-lando drush pm-enable coffee admin_toolbar_tools devel devel_generate webprofiler module_filter fpa --yes
+lando composer require drupal/devel drupal/module_filter --dev
+lando drush pm-enable coffee admin_toolbar_tools devel devel_generate webprofiler module_filter --yes
 
 echo "Browse your site by visiting:"
 lando info | grep lndo.site
