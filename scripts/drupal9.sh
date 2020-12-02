@@ -24,7 +24,6 @@ echo "recipe: drupal9" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
-echo "  php: 7.3" >> .lando.yml
 echo "  xdebug: true" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
