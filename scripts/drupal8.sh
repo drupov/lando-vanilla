@@ -24,7 +24,6 @@ echo "recipe: drupal8" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
-echo "  composer_version: '1.10.17'"
 echo "  xdebug: true" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
