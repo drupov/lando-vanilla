@@ -41,6 +41,7 @@ echo "    service: appserver" >> .lando.yml
 echo "    cmd: drupal --root=/app/web" >> .lando.yml
 
 echo "memory_limit = 512M" >> php.ini
+echo "xdebug.start_with_request = 1" >> php.ini
 
 lando start
 
