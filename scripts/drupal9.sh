@@ -54,7 +54,9 @@ lando composer create-project drupal-composer/drupal-project:9.x-dev drupal9 --n
 mv drupal9/{.[!.],}* .
 rm -rf drupal9
 
-lando restart
+cp .env.example .env
+
+lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal9:drupal9@database/drupal9 --site-name=$appName --yes
 
@@ -62,7 +64,7 @@ chmod 755 web/sites/default
 
 lando composer require drupal/coffee drupal/admin_toolbar
 lando composer require drupal/devel drupal/module_filter --dev
-lando drush pm-enable coffee admin_toolbar_tools devel devel_generate webprofiler module_filter --yes
+lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_filter --yes
 
 echo "Browse your site by visiting:"
 lando info | grep lndo.site
