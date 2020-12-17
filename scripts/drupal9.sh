@@ -54,7 +54,9 @@ lando composer create-project drupal-composer/drupal-project:9.x-dev drupal9 --n
 mv drupal9/{.[!.],}* .
 rm -rf drupal9
 
-lando restart
+cp .env.example .env
+
+lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal9:drupal9@database/drupal9 --site-name=$appName --yes
 
