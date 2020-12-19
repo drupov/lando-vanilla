@@ -41,6 +41,7 @@ echo "    cmd: drush --root=/app/web" >> .lando.yml
 
 echo "memory_limit = 512M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
+echo "xdebug.log_level = 0" >> php.ini
 
 lando start
 
