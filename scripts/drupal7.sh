@@ -58,5 +58,7 @@ lando drush pm-download ctools coffee entity entityreference devel views admin_m
 
 lando drush pm-enable coffee page_manager entityreference devel devel_generate views_ui admin_menu_toolbar token module_filter search_krumo features strongarm diff fpa --yes
 
+lando db-export initial.sql
+
 echo "Browse your site by visiting:"
 lando info | grep lndo.site
