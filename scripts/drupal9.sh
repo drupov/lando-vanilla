@@ -67,5 +67,7 @@ lando composer require drupal/coffee drupal/admin_toolbar drupal/console
 lando composer require drupal/devel drupal/module_filter --dev
 lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_filter --yes
 
+lando db-export initial.sql
+
 echo "Browse your site by visiting:"
 lando info | grep lndo.site
