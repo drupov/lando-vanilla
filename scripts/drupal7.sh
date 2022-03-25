@@ -37,7 +37,7 @@ echo "      php: php.ini" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
-echo "    cmd: drush --root=/app/web" >> .lando.yml
+echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site" >> .lando.yml
 
 echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
@@ -60,5 +60,4 @@ lando drush pm-enable coffee page_manager entityreference devel devel_generate v
 
 lando db-export initial.sql
 
-echo "Browse your site by visiting:"
-lando info | grep lndo.site
+echo "Drupal is installed and available at: https://$appName.lndo.site"

@@ -1,25 +1,25 @@
-# Launch a vanilla Lando app with one command
+# Launch a Vanilla Lando App With One Command
 
 ## Requirements
 
-All you need is l...ando. See https://docs.lando.dev/basics/installation.html.
+All you need is L...ando. See https://docs.lando.dev/basics/installation.html.
 
 ## Usage
 
-Launch an app in a lando docker container quickly by provinding a short command (replace `app-name` with something that makes sense in your case), e.g.
+Launch an app in a Lando docker container quickly by provinding a short command (replace `app-name` with something that makes sense in your case), e.g.
 
 ```
 # Drupal 7
 scripts/drupal7.sh -n app-name
 
-# Drupal 8
+# Drupal 8 - probably not needed with Drupal 8 EOL, but here for reference
 scripts/drupal8.sh -n app-name
 
 # Drupal 9
-scripts/drupal9.sh -n app-name -s
+scripts/drupal9.sh -n app-name
 
-# Drupal 8, only setup and Lando start, useful for distribution installation afterwards
-scripts/drupal8.sh -n app-name -s
+# Drupal 9, only setup and Lando start, useful for distribution installation afterwards
+scripts/drupal9.sh -n app-name -s
 
 # Node
 scripts/node.sh -n app-name
