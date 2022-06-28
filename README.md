@@ -12,9 +12,6 @@ Launch an app in a Lando docker container quickly by provinding a short command 
 # Drupal 7
 scripts/drupal7.sh -n app-name
 
-# Drupal 8 - probably not needed with Drupal 8 EOL, but here for reference
-scripts/drupal8.sh -n app-name
-
 # Drupal 9
 scripts/drupal9.sh -n app-name
 
@@ -24,3 +21,5 @@ scripts/drupal9.sh -n app-name -s
 # Node
 scripts/node.sh -n app-name
 ```
+
+Note: Drupal 8 is EOL, it is not available anymore.
