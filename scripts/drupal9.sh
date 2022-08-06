@@ -37,9 +37,6 @@ echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site" >> .lando.yml
-echo "  drupal:" >> .lando.yml
-echo "    service: appserver" >> .lando.yml
-echo "    cmd: drupal --root=/app/web --uri=https://$appName.lndo.site" >> .lando.yml
 
 echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
@@ -64,7 +61,7 @@ lando drush site-install --account-pass=admin --db-url=mysql://drupal9:drupal9@d
 
 chmod 755 web/sites/default
 
-lando composer require drupal/coffee drupal/admin_toolbar drupal/console --no-interaction
+lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
 lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_filter fpa --yes
 
