@@ -67,4 +67,4 @@ lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_fil
 
 lando db-export initial.sql
 
-echo "Drupal is installed and available at: https://$appName.lndo.site"
+echo "Drupal 9 is installed and available at: https://$appName.lndo.site"
