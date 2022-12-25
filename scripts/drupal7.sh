@@ -60,4 +60,4 @@ lando drush pm-enable coffee page_manager entityreference devel devel_generate v
 
 lando db-export initial.sql
 
-echo "Drupal is installed and available at: https://$appName.lndo.site"
+echo "Drupal 7 is installed and available at: https://$appName.lndo.site"
