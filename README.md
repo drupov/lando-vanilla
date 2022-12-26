@@ -17,8 +17,11 @@ scripts/drupal7.sh -n app-name
 # Drupal 9
 scripts/drupal9.sh -n app-name
 
-# Drupal 9, only setup and Lando start, useful for distribution installation afterwards
-scripts/drupal9.sh -n app-name -s
+# Drupal 10
+scripts/drupal10.sh -n app-name
+
+# Drupal 10, only setup and Lando start, useful for distribution installation afterwards
+scripts/drupal10.sh -n app-name -s
 
 # Node
 scripts/node.sh -n app-name
