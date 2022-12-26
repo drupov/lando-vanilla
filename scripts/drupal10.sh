@@ -67,4 +67,9 @@ lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_fil
 
 lando db-export initial.sql
 
+lando drush cex --yes
+git init
+git add .
+git commit -m "Initial commit"
+
 echo "Drupal 10 is installed and available at: https://$appName.lndo.site"

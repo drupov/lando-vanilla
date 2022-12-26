@@ -60,4 +60,8 @@ lando drush pm-enable coffee page_manager entityreference devel devel_generate v
 
 lando db-export initial.sql
 
+git init
+git add .
+git commit -m "Initial commit"
+
 echo "Drupal 7 is installed and available at: https://$appName.lndo.site"
