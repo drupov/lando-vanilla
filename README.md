@@ -1,6 +1,8 @@
 # Lando Vanilla Drupal
 
-Launch a vanilla Drupal (7, 9 or 10) with Lando with one command. Also launching a node app is supported, but consider using [NVM](https://github.com/nvm-sh/nvm) for that.
+Launch a vanilla Drupal (7, 9 or 10) or create a PHP playground with Lando with one command.
+
+Also launching a node app is supported, but consider using [NVM](https://github.com/nvm-sh/nvm) for that.
 
 ## Requirements
 
@@ -25,4 +27,7 @@ scripts/drupal10.sh -n app-name -s
 
 # Node
 scripts/node.sh -n app-name
+
+# PHP
+scripts/php.sh -n app-name
 ```
