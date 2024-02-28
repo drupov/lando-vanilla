@@ -56,6 +56,7 @@ lando composer require drush/drush
 lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal10:drupal10@database/drupal10 --site-name=$appName --yes
+# @todo: append `$settings['config_sync_directory'] = '../config/sync';` to settings.php
 
 lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
