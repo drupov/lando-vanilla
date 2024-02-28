@@ -49,17 +49,13 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:10.x-dev drupal10 --no-interaction
-mv drupal10/{.[!.],}* .
-rm -rf drupal10
-
-cp .env.example .env
+lando composer create drupal/recommended-project
+mv recommended-project/{.[!.],}* .
+lando composer require drush/drush
 
 lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal10:drupal10@database/drupal10 --site-name=$appName --yes
-
-chmod 755 web/sites/default
 
 lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
