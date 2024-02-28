@@ -49,8 +49,9 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create drupal/recommended-project
-mv recommended-project/{.[!.],}* .
+lando composer create drupal/recommended-project drupal10
+mv drupal10/{.[!.],}* .
+rm -rf drupal10
 lando composer require drush/drush
 
 lando rebuild -y
