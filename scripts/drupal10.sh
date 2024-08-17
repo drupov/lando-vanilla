@@ -25,7 +25,7 @@ echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
 echo "  xdebug: true" >> .lando.yml
-echo "  php: 8.1" >> .lando.yml
+echo "  php: 8.3" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
 echo "    overrides:" >> .lando.yml
@@ -41,6 +41,7 @@ echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site" >> .lando
 echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
 echo "xdebug.log_level = 0" >> php.ini
+echo "apc.shm_size=33M
 
 lando start
 
