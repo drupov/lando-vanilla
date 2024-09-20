@@ -16,14 +16,14 @@ Launch an app in a Lando docker container quickly by provinding a short command 
 # Drupal 7
 scripts/drupal7.sh -n app-name
 
-# Drupal 9
-scripts/drupal9.sh -n app-name
-
 # Drupal 10
 scripts/drupal10.sh -n app-name
 
 # Drupal 10, only setup and Lando start, useful for distribution installation afterwards
 scripts/drupal10.sh -n app-name -s
+
+# Drupal 11
+scripts/drupal11.sh -n app-name
 
 # Node
 scripts/node.sh -n app-name
@@ -31,3 +31,5 @@ scripts/node.sh -n app-name
 # PHP
 scripts/php.sh -n app-name
 ```
+
+Note: Drupal 11 has no `coffee` and `fpa` modules as they are not Drupal 11 ready yet.
