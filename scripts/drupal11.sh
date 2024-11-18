@@ -61,7 +61,7 @@ lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11
 
 chmod 755 web/sites/default
 
-lando composer require drupal/admin_toolbar --no-interaction
+lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter --dev --no-interaction
 lando drush pm-enable admin_toolbar_tools devel devel_generate module_filter --yes
 
