@@ -34,5 +34,5 @@ scripts/php.sh -n app-name
 
 Notes:
 
-- Drupal 11 and Drupal CMS have no `fpa` module, as it has a console error, `Uncaught TypeError: Drupal.behaviors.permissions is undefined`.
+- Drupal CMS has no `fpa` module, as it has a console error, `Uncaught TypeError: Drupal.behaviors.permissions is undefined`.
 - Drupal CMS has is not using `admin_toolbar` anymore.
