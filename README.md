@@ -1,6 +1,6 @@
 # Lando Vanilla Drupal
 
-Launch a vanilla Drupal (7, 9 or 10) or create a PHP playground with Lando with one command.
+Launch a vanilla Drupal (7, 10, 11 or CMS) or create a PHP playground with Lando with one command.
 
 Also launching a node app is supported, but consider using [NVM](https://github.com/nvm-sh/nvm) for that.
 
@@ -37,5 +37,5 @@ scripts/php.sh -n app-name
 
 Notes:
 
-- Drupal 11 has no `coffee` and `fpa` modules as they are not Drupal 11 ready yet.
-- Drupal CMS has no `fpa` modules as they are not Drupal 11 ready yet and is not using `admin_toolbar` anymore.
+- Drupal 11 and Drupal CMS have no `fpa` module, as it has a console error, `Uncaught TypeError: Drupal.behaviors.permissions is undefined`.
+- Drupal CMS has is not using `admin_toolbar` anymore.
