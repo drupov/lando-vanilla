@@ -25,6 +25,9 @@ scripts/drupal10.sh -n app-name -s
 # Drupal 11
 scripts/drupal11.sh -n app-name
 
+# Drupal CMS
+scripts/drupalcms.sh -n app-name
+
 # Node
 scripts/node.sh -n app-name
 
@@ -32,4 +35,7 @@ scripts/node.sh -n app-name
 scripts/php.sh -n app-name
 ```
 
-Note: Drupal 11 has no `coffee` and `fpa` modules as they are not Drupal 11 ready yet.
+Notes:
+
+- Drupal 11 has no `coffee` and `fpa` modules as they are not Drupal 11 ready yet.
+- Drupal CMS has no `fpa` modules as they are not Drupal 11 ready yet and is not using `admin_toolbar` anymore.
