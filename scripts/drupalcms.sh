@@ -49,7 +49,7 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal/cms
+lando composer create-project drupal/cms --no-interaction
 mv cms/{.[!.],}* .
 rm -rf cms
 
@@ -63,8 +63,8 @@ sed -i 's/memory_limit = 256M/memory_limit = 128M/' php.ini
 lando restart
 
 lando composer require drupal/coffee --no-interaction
-lando composer require drupal/devel drupal/module_filter --dev --no-interaction
-lando drush pm-enable coffee devel devel_generate module_filter --yes
+lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
+lando drush pm-enable coffee devel devel_generate module_filter fpa --yes
 
 git init
 git add .
