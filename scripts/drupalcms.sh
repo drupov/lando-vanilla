@@ -66,4 +66,11 @@ lando composer require drupal/coffee --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
 lando drush pm-enable coffee devel devel_generate module_filter fpa --yes
 
+lando db-export initial.sql
+
+lando drush cex --yes
+git init
+git add .
+git commit -m "Initial commit"
+
 echo "Drupal CMS is installed and available at: https://$appName.lndo.site"
