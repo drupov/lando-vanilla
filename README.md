@@ -13,17 +13,17 @@ All you need is L...ando. See https://docs.lando.dev/install.
 Launch an app in a Lando docker container quickly by provinding a short command (replace `app-name` with something that makes sense in your case), e.g.
 
 ```
-# Drupal 10
-scripts/drupal10.sh -n app-name
-
-# Drupal 10, only setup and Lando start, useful for distribution installation afterwards
-scripts/drupal10.sh -n app-name -s
-
 # Drupal 11
 scripts/drupal11.sh -n app-name
 
 # Drupal CMS
 scripts/drupalcms.sh -n app-name
+
+# Drupal 11, only setup and Lando start, useful for distribution installation afterwards
+scripts/drupal11.sh -n app-name -s
+
+# Drupal 10
+scripts/drupal10.sh -n app-name
 
 # Node
 scripts/node.sh -n app-name
@@ -31,8 +31,3 @@ scripts/node.sh -n app-name
 # PHP
 scripts/php.sh -n app-name
 ```
-
-Notes:
-
-- Drupal CMS has no `fpa` module, as it has a console error, `Uncaught TypeError: Drupal.behaviors.permissions is undefined`.
-- Drupal CMS has is not using `admin_toolbar` anymore.
