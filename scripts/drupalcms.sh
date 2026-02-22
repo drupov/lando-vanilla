@@ -38,7 +38,7 @@ echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site --xdebug" >> .lando.yml
 
-echo "memory_limit = 256M" >> php.ini
+echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
 echo "xdebug.log_level = 0" >> php.ini
 echo "apc.shm_size = 64M" >> php.ini
@@ -57,11 +57,6 @@ rm -rf cms
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
 chmod 755 web/sites/default
-
-# Installation with Drush fails if the memory_limit is too low
-sed -i 's/memory_limit = 256M/memory_limit = 128M/' php.ini
-
-lando restart
 
 lando composer require drupal/coffee --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
