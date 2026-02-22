@@ -64,7 +64,7 @@ chmod 755 web/sites/default
 
 lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
-lando drush pm-enable coffee admin_toolbar_tools devel devel_generate module_filter fpa --yes
+lando drush pm-enable coffee admin_toolbar admin_toolbar_tools devel devel_generate module_filter fpa --yes
 
 lando db-export initial.sql
 
