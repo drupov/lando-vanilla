@@ -69,6 +69,50 @@ lando drush pm-enable coffee admin_toolbar admin_toolbar_tools devel devel_gener
 lando db-export initial.sql
 
 lando drush cex --yes
+
+cat > AGENTS.md <<'EOF'
+# AGENTS.md
+
+Drupal 11 project using Lando.
+
+## Commands
+
+Use Lando for Drupal and PHP commands.
+
+```bash
+lando start
+lando composer install
+lando drush cr
+lando drush updb -y
+lando drush cim -y
+lando drush cex -y
+```
+
+## Project structure
+
+- Web root: `web/`
+- Custom modules: `web/modules/custom/`
+- Custom themes: `web/themes/custom/`
+
+## Conventions
+
+- Prefer dependency injection over static `\Drupal::service()` calls in classes.
+- Keep changes minimal and scoped to the task.
+- Do not edit `vendor/` directly.
+- Do not edit contributed modules directly.
+
+## Naming conventions
+
+- Follow existing naming patterns in the repository for custom modules, themes, services, and helper functions.
+- Prefer adding code to an existing relevant custom module instead of creating a new one.
+
+## Before finishing
+
+When relevant:
+- mention whether `lando drush cr` is needed
+- mention whether `lando drush updb -y` is needed
+- mention whether `lando drush cim -y` is needed
+EOF
 git init
 git add .
 git commit -m "Initial commit"
