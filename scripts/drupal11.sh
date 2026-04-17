@@ -86,7 +86,20 @@ lando drush cr
 lando drush updb -y
 lando drush cim -y
 lando drush cex -y
+lando php
+lando php ./vendor/bin/phpcs --standard=Drupal,DrupalPractice web/modules/custom web/themes/custom web/sites/default/settings.php
+lando php ./vendor/bin/phpstan analyse --level=5 web/modules/custom
+lando php ./vendor/bin/rector process web/modules/custom --config=vendor/drush/drush/rector.php --dry-run
 ```
+
+## Code Standards
+
+- PHP: Drupal + DrupalPractice PHPCS on `web/modules/custom/`, `web/themes/custom/`, `web/sites/default/settings.php`
+- PHPStan level 5
+- Rector on custom modules only
+- LF line endings
+- 2-space indent
+- 4-space indent for `composer.json`
 
 ## Project structure
 
@@ -97,6 +110,12 @@ lando drush cex -y
 ## Conventions
 
 - Prefer dependency injection over static `\Drupal::service()` calls in classes.
+- Match Drupal core documentation style for custom PHP code.
+- Add class docblocks to custom classes and interfaces.
+- Add docblocks for constructors, public methods, and non-trivial protected/private methods.
+- Add docblocks for properties when their purpose is not obvious from the native type and name alone.
+- In `*.module` and `*.theme` files, add docblocks for hook implementations and helper functions.
+- Add brief inline comments for non-obvious logic blocks, but do not comment trivial assignments or self-explanatory code.
 - Keep changes minimal and scoped to the task.
 - Do not edit `vendor/` directly.
 - Do not edit contributed modules directly.
