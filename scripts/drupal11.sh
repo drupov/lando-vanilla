@@ -113,6 +113,12 @@ When relevant:
 - mention whether `lando drush updb -y` is needed
 - mention whether `lando drush cim -y` is needed
 EOF
+
+rm -rf /tmp/drupal-ai
+git clone https://github.com/edutrul/drupal-ai.git /tmp/drupal-ai
+mkdir -p .codex
+cp -r /tmp/drupal-ai/.claude/skills .codex
+
 git init
 git add .
 git commit -m "Initial commit"
