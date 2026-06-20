@@ -1,4 +1,8 @@
 #!/bin/bash
+set -eo pipefail
+
+scriptPath="$(readlink -f "${BASH_SOURCE[0]}")"
+scriptDir="$(cd "$(dirname "$scriptPath")" && pwd)"
 
 while getopts "n:s" OPTION; do
     case $OPTION in
@@ -36,7 +40,7 @@ echo "      php: php.ini" >> .lando.yml
 echo "tooling:" >> .lando.yml
 echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
-echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site --xdebug" >> .lando.yml
+echo "    cmd: /app/vendor/bin/drush --root=/app/web --uri=https://$appName.lndo.site --xdebug" >> .lando.yml
 
 echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
@@ -50,15 +54,33 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:11.x-dev drupal11 --no-interaction
+lando composer create-project drupal/recommended-project:^11 drupal11 --no-interaction
 mv drupal11/{.[!.],}* .
 rm -rf drupal11
 
-cp .env.example .env
+if [ -f .env.example ]; then
+  cp .env.example .env
+elif [ ! -f .env ]; then
+  touch .env
+fi
+
+mkdir -p config/sync
+
+lando composer require drush/drush --no-interaction
+lando composer require cweagans/composer-patches --no-interaction
 
 lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
+
+chmod u+w web/sites/default web/sites/default/settings.php
+configSyncSetting="\$settings['config_sync_directory'] = '../config/sync';"
+if grep -q "config_sync_directory" web/sites/default/settings.php; then
+  sed -i "/config_sync_directory/c\\$configSyncSetting" web/sites/default/settings.php
+else
+  echo "$configSyncSetting" >> web/sites/default/settings.php
+fi
+chmod 444 web/sites/default/settings.php
 
 chmod 755 web/sites/default
 
@@ -68,9 +90,13 @@ lando drush pm-enable coffee admin_toolbar admin_toolbar_tools devel devel_gener
 
 lando db-export initial.sql
 
-lando drush cex --yes
-git init
-git add .
-git commit -m "Initial commit"
+lando drush cex --yes --quiet
+lando drush status --field=bootstrap | grep -q "Successful"
+test -f config/sync/core.extension.yml
+cp "$scriptDir/templates/drupal.gitignore" .gitignore
+git init --quiet
+git add --force .gitignore
+git add --all
+git commit --quiet -m "Initial commit"
 
 echo "Drupal 11 is installed and available at: https://$appName.lndo.site"
