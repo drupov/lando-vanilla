@@ -50,7 +50,11 @@ if [[ $skip ]]; then
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:11.x-dev drupal11 --no-interaction
+lando composer create-project drupal-composer/drupal-project:11.x-dev drupal11 --no-interaction --no-install
+cd drupal11
+lando composer config --no-plugins allow-plugins.symfony/runtime true
+lando composer install
+cd ..
 mv drupal11/{.[!.],}* .
 rm -rf drupal11
 
