@@ -14,20 +14,20 @@ Launch an app in a Lando docker container quickly by provinding a short command 
 
 ```
 # Drupal 11
-scripts/drupal11.sh -n app-name
+/path/to/scripts/drupal11.sh -n app-name
 
 # Drupal CMS
-scripts/drupalcms.sh -n app-name
+/path/to/scripts/drupalcms.sh -n app-name
 
 # Drupal 11, only setup and Lando start, useful for distribution installation afterwards
-scripts/drupal11.sh -n app-name -s
+/path/to/scripts/drupal11.sh -n app-name -s
 
 # Drupal 10
-scripts/drupal10.sh -n app-name
+/path/to/scripts/drupal10.sh -n app-name
 
 # Node
-scripts/node.sh -n app-name
+/path/to/scripts/node.sh -n app-name
 
 # PHP
-scripts/php.sh -n app-name
+/path/to/scripts/php.sh -n app-name
 ```
