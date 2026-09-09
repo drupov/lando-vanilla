@@ -1,23 +1,9 @@
 #!/bin/bash
 
-while getopts "n:s" OPTION; do
-    case $OPTION in
-    n)
-      appName=$OPTARG
-      ;;
-    s)
-      skip=1
-      ;;
-    esac
-done
+scriptDir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+source "$scriptDir/_bootstrap.sh"
 
-if [ -v $appName ]; then
-  echo "Please provide the app name by passing it with the -n parameter."
-  exit 1
-fi
-
-mkdir $appName
-cd $appName
+prepare_app_directory "n:s" "$@"
 
 echo "name: $appName" >> .lando.yml
 echo "recipe: drupal11" >> .lando.yml

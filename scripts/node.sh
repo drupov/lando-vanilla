@@ -1,25 +1,9 @@
 #!/bin/bash
 
-noAppNameMessage="Please provide the app name by passing it with the -n parameter."
+scriptDir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+source "$scriptDir/_bootstrap.sh"
 
-while getopts "n:" OPTION; do
-  case $OPTION in
-  n)
-    appName=$OPTARG
-    ;;
-  *)
-    echo $noAppNameMessage
-    exit 1
-  esac
-done
-
-if [ -v $appName ]; then
-  echo $noAppNameMessage
-  exit 1
-fi
-
-mkdir $appName
-cd $appName
+prepare_app_directory "n:" "$@"
 
 echo "name: $appName" >> .lando.yml
 echo "services:" >> .lando.yml
