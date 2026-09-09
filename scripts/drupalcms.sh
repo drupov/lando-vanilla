@@ -10,7 +10,7 @@ echo "recipe: drupal11" >> .lando.yml
 echo "config:" >> .lando.yml
 echo "  via: nginx" >> .lando.yml
 echo "  webroot: web" >> .lando.yml
-echo "  php: 8.4" >> .lando.yml
+echo "  php: 8.5" >> .lando.yml
 echo "  xdebug: true" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
@@ -24,7 +24,7 @@ echo "  drush:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "    cmd: drush --root=/app/web --uri=https://$appName.lndo.site --xdebug" >> .lando.yml
 
-echo "memory_limit = 128M" >> php.ini
+echo "memory_limit = 256M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
 echo "xdebug.log_level = 0" >> php.ini
 echo "apc.shm_size = 64M" >> php.ini
@@ -51,8 +51,11 @@ lando drush pm-enable coffee devel devel_generate module_filter fpa --yes
 lando db-export initial.sql
 
 lando drush cex --yes
+sed -i 's/^memory_limit = 256M$/memory_limit = 128M/' php.ini
 git init
 git add .
 git commit -m "Initial commit"
+
+lando rebuild -y
 
 echo "Drupal CMS is installed and available at: https://$appName.lndo.site"
