@@ -52,9 +52,9 @@ lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11
 
 chmod 755 web/sites/default
 
-lando composer require drupal/coffee --no-interaction
+lando composer require drupal/coffee drupal/navigation_extra_tools --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
-lando drush pm-enable coffee devel devel_generate module_filter fpa --yes
+lando drush pm-enable coffee devel devel_generate module_filter navigation_extra_tools fpa --yes
 
 lando db-export initial.sql
 
