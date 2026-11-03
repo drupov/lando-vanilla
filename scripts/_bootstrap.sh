@@ -35,3 +35,8 @@ prepare_app_directory() {
   mkdir "$appName"
   cd "$appName" || exit 1
 }
+
+create_agents_file() {
+  local drupalProject=$1
+  sed "s/{{DRUPAL_PROJECT}}/$drupalProject/g" "$scriptDir/_agents.md" > AGENTS.md
+}

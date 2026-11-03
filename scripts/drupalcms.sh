@@ -40,6 +40,8 @@ lando composer create-project drupal/cms --no-interaction
 mv cms/{.[!.],}* .
 rm -rf cms
 
+create_agents_file "Drupal CMS"
+
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
 chmod 755 web/sites/default
