@@ -46,6 +46,8 @@ rm -rf drupal11
 
 cp .env.example .env
 
+create_agents_file "Drupal 11"
+
 lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes

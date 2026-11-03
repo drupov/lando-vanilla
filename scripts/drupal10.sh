@@ -42,6 +42,8 @@ rm -rf drupal10
 
 cp .env.example .env
 
+create_agents_file "Drupal 10"
+
 lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal10:drupal10@database/drupal10 --site-name=$appName --yes
