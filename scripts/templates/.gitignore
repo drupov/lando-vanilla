@@ -12,3 +12,6 @@
 /web/sites/*/services*.yml
 /web/sites/*/files/
 
+# Database dumps.
+*.sql
+*.sql.gz
