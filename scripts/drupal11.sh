@@ -48,21 +48,7 @@ mv drupal11/{.[!.],}* .
 shopt -u nullglob
 rm -rf drupal11
 
-cat > .gitignore <<'EOF'
-/.env
-/.lando.local.yml
-/vendor/
-/drush/Commands/contrib/
-/web/core/
-/web/libraries/
-/web/modules/contrib/
-/web/profiles/contrib/
-/web/themes/contrib/
-/web/sites/*/files/
-/web/sites/*/private/
-/web/sites/*/settings*.php
-/web/sites/*/services*.yml
-EOF
+cp "$scriptDir/templates/.gitignore" .gitignore
 
 create_agents_file "Drupal 11"
 

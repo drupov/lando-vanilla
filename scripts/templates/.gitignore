@@ -1,0 +1,17 @@
+# Composer-managed Drupal packages.
+/drush/Commands/contrib/
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Site-specific configuration and generated public files.
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+/web/sites/*/files/
+
+# Machine-local Lando configuration.
+/.lando.local.yml
+
