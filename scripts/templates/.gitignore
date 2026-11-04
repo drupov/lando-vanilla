@@ -1,5 +1,4 @@
 # Composer-managed Drupal packages.
-/drush/Commands/contrib/
 /vendor/
 /web/core/
 /web/modules/contrib/
@@ -7,11 +6,9 @@
 /web/profiles/contrib/
 /web/libraries/
 
-# Site-specific configuration and generated public files.
+# Local environment and site-specific configuration.
+/.env
 /web/sites/*/settings*.php
 /web/sites/*/services*.yml
 /web/sites/*/files/
-
-# Machine-local Lando configuration.
-/.lando.local.yml
 
