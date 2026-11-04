@@ -51,8 +51,6 @@ printf '\n# Database dumps.\n*.sql\n*.sql.gz\n' >> .gitignore
 
 create_agents_file "Drupal CMS"
 
-lando rebuild -y
-
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
 chmod 755 web/sites/default
@@ -61,10 +59,12 @@ lando composer require drupal/coffee --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
 lando drush pm-enable coffee devel devel_generate module_filter fpa --yes
 
+sed -i 's/^memory_limit = 256M$/memory_limit = 128M/' php.ini
+lando restart
+
 lando db-export initial.sql
 
 lando drush cex --yes
-sed -i 's/^memory_limit = 256M$/memory_limit = 128M/' php.ini
 git init
 git add .
 git commit -m "Initial commit"
