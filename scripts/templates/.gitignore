@@ -1,0 +1,17 @@
+# Composer-managed Drupal packages.
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Local environment and site-specific configuration.
+/.env
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+/web/sites/*/files/
+
+# Database dumps.
+*.sql
+*.sql.gz

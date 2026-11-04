@@ -38,5 +38,5 @@ prepare_app_directory() {
 
 create_agents_file() {
   local drupalProject=$1
-  sed "s/{{DRUPAL_PROJECT}}/$drupalProject/g" "$scriptDir/_agents.md" > AGENTS.md
+  sed "s/{{DRUPAL_PROJECT}}/$drupalProject/g" "$scriptDir/templates/AGENTS.md" > AGENTS.md
 }
