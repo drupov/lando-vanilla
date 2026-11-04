@@ -19,7 +19,11 @@
 - Use Composer to manage PHP dependencies.
 
 ## Commands
-- Run Drush commands through Lando: `lando drush <command>`.
+- Run project commands inside Lando:
+  - Drush: `lando drush <command>`
+  - Composer: `lando composer <command>`
+  - PHP: `lando php <command>`
+- Use `lando exec <service> -- <command>` only when a command must run on a specific service.
 
 ## Safety
 - Never commit credentials or secrets.
