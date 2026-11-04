@@ -38,14 +38,14 @@ if [[ ${skip:-} ]]; then
    exit 0
 fi
 
-lando composer create-project drupal/cms cms --no-interaction --no-install
-cd cms
+lando composer create-project drupal/cms drupalcms --no-interaction --no-install
+cd drupalcms
 lando composer install
 cd ..
 shopt -s nullglob
-mv cms/{.[!.],}* .
+mv drupalcms/{.[!.],}* .
 shopt -u nullglob
-rm -rf cms
+rm -rf drupalcms
 
 printf '\n# Database dumps.\n*.sql\n*.sql.gz\n' >> .gitignore
 
