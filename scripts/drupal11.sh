@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 scriptDir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 source "$scriptDir/_bootstrap.sh"
 
@@ -31,25 +33,43 @@ echo "apc.shm_size = 64M" >> php.ini
 
 lando start
 
-if [[ $skip ]]; then
+if [[ ${skip:-} ]]; then
    echo "Skipping site installation."
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:11.x-dev drupal11 --no-interaction --no-install
+lando composer create-project drupal/recommended-project:^11 drupal11 --no-interaction --no-install
 cd drupal11
-lando composer config --no-plugins allow-plugins.symfony/runtime true
 lando composer install
+lando composer require drush/drush --dev --no-interaction
 cd ..
+shopt -s nullglob
 mv drupal11/{.[!.],}* .
+shopt -u nullglob
 rm -rf drupal11
 
-cp .env.example .env
+cat > .gitignore <<'EOF'
+/.env
+/.lando.local.yml
+/vendor/
+/drush/Commands/contrib/
+/web/core/
+/web/libraries/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+EOF
 
 create_agents_file "Drupal 11"
 
 lando rebuild -y
 
+mkdir -p web/sites/default/files
+chmod 777 web/sites/default web/sites/default/files
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
 chmod 755 web/sites/default
