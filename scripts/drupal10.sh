@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 scriptDir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 source "$scriptDir/_bootstrap.sh"
 
@@ -31,24 +33,36 @@ echo "apc.shm_size = 64M" >> php.ini
 
 lando start
 
-if [[ $skip ]]; then
+if [[ ${skip:-} ]]; then
    echo "Skipping site installation."
    exit 0
 fi
 
-lando composer create-project drupal-composer/drupal-project:10.x-dev drupal10 --no-interaction
+lando composer create-project drupal/recommended-project:^10 drupal10 --no-interaction --no-install
+cd drupal10
+lando composer install
+lando composer require drush/drush --dev --no-interaction
+cd ..
+shopt -s nullglob
 mv drupal10/{.[!.],}* .
+shopt -u nullglob
 rm -rf drupal10
 
-cp .env.example .env
+cp "$scriptDir/templates/.gitignore" .gitignore
 
 create_agents_file "Drupal 10"
 
 lando rebuild -y
 
+mkdir -p config/sync web/sites/default/files
+cp web/sites/default/default.settings.php web/sites/default/settings.php
+echo "\$settings['config_sync_directory'] = '../config/sync';" >> web/sites/default/settings.php
+chmod 666 web/sites/default/settings.php
+chmod 777 config/sync web/sites/default web/sites/default/files
 lando drush site-install --account-pass=admin --db-url=mysql://drupal10:drupal10@database/drupal10 --site-name=$appName --yes
 
 chmod 755 web/sites/default
+chmod 644 web/sites/default/settings.php
 
 lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction

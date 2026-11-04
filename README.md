@@ -2,7 +2,7 @@
 
 Launch a vanilla Drupal (10, 11 or CMS) or create a PHP playground with Lando with one command.
 
-Drupal 11 projects use the official `drupal/recommended-project` Composer template.
+Drupal 10 and 11 projects use the official `drupal/recommended-project` Composer template.
 
 Also launching a node app is supported, but consider using [NVM](https://github.com/nvm-sh/nvm) for that.
 
@@ -24,7 +24,7 @@ Launch an app in a Lando docker container quickly by provinding a short command 
 # Drupal 11, only setup and Lando start, useful for distribution installation afterwards
 /path/to/scripts/drupal11.sh -n app-name -s
 
-# Drupal 10
+# Drupal 10 (using drupal/recommended-project)
 /path/to/scripts/drupal10.sh -n app-name
 
 # Node
