@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 scriptDir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 source "$scriptDir/_bootstrap.sh"
 
@@ -31,16 +33,25 @@ echo "apc.shm_size = 64M" >> php.ini
 
 lando start
 
-if [[ $skip ]]; then
+if [[ ${skip:-} ]]; then
    echo "Skipping site installation."
    exit 0
 fi
 
-lando composer create-project drupal/cms --no-interaction
+lando composer create-project drupal/cms cms --no-interaction --no-install
+cd cms
+lando composer install
+cd ..
+shopt -s nullglob
 mv cms/{.[!.],}* .
+shopt -u nullglob
 rm -rf cms
 
+printf '\n# Database dumps.\n*.sql\n*.sql.gz\n' >> .gitignore
+
 create_agents_file "Drupal CMS"
+
+lando rebuild -y
 
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
@@ -57,7 +68,5 @@ sed -i 's/^memory_limit = 256M$/memory_limit = 128M/' php.ini
 git init
 git add .
 git commit -m "Initial commit"
-
-lando rebuild -y
 
 echo "Drupal CMS is installed and available at: https://$appName.lndo.site"
