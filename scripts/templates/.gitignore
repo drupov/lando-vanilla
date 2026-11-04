@@ -7,7 +7,6 @@
 /web/libraries/
 
 # Local environment and site-specific configuration.
-/.env
 /web/sites/*/settings*.php
 /web/sites/*/services*.yml
 /web/sites/*/files/
