@@ -68,11 +68,15 @@ create_agents_file "Drupal 11"
 
 lando rebuild -y
 
-mkdir -p web/sites/default/files
-chmod 777 web/sites/default web/sites/default/files
+mkdir -p config/sync web/sites/default/files
+cp web/sites/default/default.settings.php web/sites/default/settings.php
+echo "\$settings['config_sync_directory'] = '../config/sync';" >> web/sites/default/settings.php
+chmod 666 web/sites/default/settings.php
+chmod 777 config/sync web/sites/default web/sites/default/files
 lando drush site-install --account-pass=admin --db-url=mysql://drupal11:drupal11@database/drupal11 --site-name=$appName --yes
 
 chmod 755 web/sites/default
+chmod 644 web/sites/default/settings.php
 
 lando composer require drupal/coffee drupal/navigation_extra_tools --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
