@@ -41,10 +41,9 @@ fi
 lando composer create-project drupal/cms drupalcms --no-interaction --no-install
 cd drupalcms
 lando composer install
+
 cd ..
-shopt -s nullglob
 mv drupalcms/{.[!.],}* .
-shopt -u nullglob
 rm -rf drupalcms
 
 printf '\n# Database dumps.\n*.sql\n*.sql.gz\n' >> .gitignore
