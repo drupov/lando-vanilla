@@ -40,12 +40,17 @@ fi
 
 lando composer create-project drupal/recommended-project:^10 drupal10 --no-interaction --no-install
 cd drupal10
-lando composer install
-lando composer require drush/drush --dev --no-interaction
+lando composer remove drupal/core-project-message --no-interaction
+lando composer config --unset extra.drupal-core-project-message --no-interaction
+lando composer config --unset homepage --no-interaction
+lando composer config --unset support --no-interaction
+lando composer require drush/drush --no-interaction
+lando composer config allow-plugins.tbachert/spi true --no-interaction
+lando composer require drupal/core-dev --dev --with-all-dependencies --no-interaction
+lando composer config allow-plugins.cweagans/composer-patches true --no-interaction
+lando composer require cweagans/composer-patches:~2.0 --no-interaction
 cd ..
-shopt -s nullglob
 mv drupal10/{.[!.],}* .
-shopt -u nullglob
 rm -rf drupal10
 
 cp "$scriptDir/templates/.gitignore" .gitignore
@@ -57,12 +62,7 @@ lando rebuild -y
 mkdir -p config/sync web/sites/default/files
 cp web/sites/default/default.settings.php web/sites/default/settings.php
 echo "\$settings['config_sync_directory'] = '../config/sync';" >> web/sites/default/settings.php
-chmod 666 web/sites/default/settings.php
-chmod 777 config/sync web/sites/default web/sites/default/files
 lando drush site-install --account-pass=admin --db-url=mysql://drupal10:drupal10@database/drupal10 --site-name=$appName --yes
-
-chmod 755 web/sites/default
-chmod 644 web/sites/default/settings.php
 
 lando composer require drupal/coffee drupal/admin_toolbar --no-interaction
 lando composer require drupal/devel drupal/module_filter drupal/fpa --dev --no-interaction
