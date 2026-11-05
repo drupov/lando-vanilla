@@ -40,6 +40,10 @@ fi
 
 lando composer create-project drupal/recommended-project:^11 drupal11 --no-interaction --no-install
 cd drupal11
+lando composer remove drupal/core-project-message --no-interaction
+lando composer config --unset extra.drupal-core-project-message --no-interaction
+lando composer config --unset homepage --no-interaction
+lando composer config --unset support --no-interaction
 lando composer require drush/drush --no-interaction
 lando composer config allow-plugins.tbachert/spi true --no-interaction
 lando composer require drupal/core-dev --dev --with-all-dependencies --no-interaction
