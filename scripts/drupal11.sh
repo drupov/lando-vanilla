@@ -47,6 +47,8 @@ lando composer config --unset support --no-interaction
 lando composer require drush/drush --no-interaction
 lando composer config allow-plugins.tbachert/spi true --no-interaction
 lando composer require drupal/core-dev --dev --with-all-dependencies --no-interaction
+lando composer config allow-plugins.cweagans/composer-patches true --no-interaction
+lando composer require cweagans/composer-patches:~2.0 --no-interaction
 
 cd ..
 mv drupal11/{.[!.],}* .
