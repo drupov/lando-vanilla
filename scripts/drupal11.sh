@@ -47,10 +47,9 @@ lando composer config --unset support --no-interaction
 lando composer require drush/drush --no-interaction
 lando composer config allow-plugins.tbachert/spi true --no-interaction
 lando composer require drupal/core-dev --dev --with-all-dependencies --no-interaction
+
 cd ..
-shopt -s nullglob
 mv drupal11/{.[!.],}* .
-shopt -u nullglob
 rm -rf drupal11
 
 cp "$scriptDir/templates/.gitignore" .gitignore
