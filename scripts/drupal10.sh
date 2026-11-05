@@ -16,9 +16,6 @@ echo "  php: 8.4" >> .lando.yml
 echo "  xdebug: true" >> .lando.yml
 echo "services:" >> .lando.yml
 echo "  appserver:" >> .lando.yml
-echo "    overrides:" >> .lando.yml
-echo "      environment:" >> .lando.yml
-echo "        PHP_IDE_CONFIG: 'serverName=appserver'" >> .lando.yml
 echo "    config:" >> .lando.yml
 echo "      php: php.ini" >> .lando.yml
 echo "tooling:" >> .lando.yml
@@ -30,6 +27,9 @@ echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
 echo "xdebug.log_level = 0" >> php.ini
 echo "apc.shm_size = 64M" >> php.ini
+
+mkdir -p .vscode
+cp "$scriptDir/templates/launch.json" .vscode/launch.json
 
 lando start
 
