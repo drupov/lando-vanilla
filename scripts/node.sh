@@ -25,5 +25,7 @@ echo "  yarn:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "  gulp:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
+echo "env_file:" >> .lando.yml
+echo "  - .env" >> .lando.yml
 
 lando start
