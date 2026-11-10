@@ -23,6 +23,9 @@ echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
 echo "xdebug.log_level = 0" >> php.ini
 
+mkdir -p .vscode
+cp "$scriptDir/templates/launch.json" .vscode/launch.json
+
 lando start
 
 echo "PHP is available in $appName with: lando php"
