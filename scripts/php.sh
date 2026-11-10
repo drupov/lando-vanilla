@@ -18,6 +18,8 @@ echo "  php:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
 echo "  composer:" >> .lando.yml
 echo "    service: appserver" >> .lando.yml
+echo "env_file:" >> .lando.yml
+echo "  - .env" >> .lando.yml
 
 echo "memory_limit = 128M" >> php.ini
 echo "xdebug.start_with_request = 1" >> php.ini
