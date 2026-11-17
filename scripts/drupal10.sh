@@ -46,7 +46,8 @@ lando composer remove drupal/core-project-message --no-interaction
 lando composer config --unset extra.drupal-core-project-message --no-interaction
 lando composer config --unset homepage --no-interaction
 lando composer config --unset support --no-interaction
-lando composer require drush/drush --no-interaction
+# Robo 5.2.x calls Application::addCommand(), which Drush 13 does not provide.
+lando composer require drush/drush consolidation/robo:5.1.1 --no-interaction
 lando composer config allow-plugins.tbachert/spi true --no-interaction
 lando composer require drupal/core-dev --dev --with-all-dependencies --no-interaction
 lando composer config allow-plugins.cweagans/composer-patches true --no-interaction
